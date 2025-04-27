@@ -2,4 +2,4 @@
 
 A centralised place to work on shaders :)
 
-Currently using the main branch as the template to copy from.
+Can use main branch as a template to copy from...
