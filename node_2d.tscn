@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://wq65i1yvnls2"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="3_crnj2"]
+[ext_resource type="Shader" path="res://water4.gdshader" id="3_mljdr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co7hh"]
+shader = ExtResource("3_mljdr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aw7vc"]
+shader = ExtResource("3_mljdr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mixvq"]
+shader = ExtResource("3_mljdr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sib4b"]
+shader = ExtResource("3_mljdr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08hfs"]
+shader = ExtResource("3_mljdr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eri7h"]
+shader = ExtResource("3_mljdr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84tej"]
+shader = ExtResource("3_mljdr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob0rm"]
+shader = ExtResource("3_mljdr")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("3_crnj2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_co7hh")
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 296.0
+offset_bottom = 256.0
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_aw7vc")
+offset_left = 600.0
+offset_top = 96.0
+offset_right = 792.0
+offset_bottom = 288.0
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mixvq")
+offset_left = 792.0
+offset_top = 96.0
+offset_right = 984.0
+offset_bottom = 288.0
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_sib4b")
+offset_left = 408.0
+offset_top = 288.0
+offset_right = 600.0
+offset_bottom = 480.0
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_08hfs")
+offset_left = 600.0
+offset_top = 288.0
+offset_right = 792.0
+offset_bottom = 480.0
+
+[node name="ColorRect8" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_eri7h")
+offset_left = 792.0
+offset_top = 288.0
+offset_right = 984.0
+offset_bottom = 480.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_84tej")
+offset_left = 104.0
+offset_top = 320.0
+offset_right = 296.0
+offset_bottom = 512.0
+
+[node name="ColorRect9" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_co7hh")
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 296.0
+offset_bottom = 256.0
+
+[node name="ColorRect10" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ob0rm")
+offset_left = 1192.0
+offset_top = -104.0
+offset_right = 4080.0
+offset_bottom = 1392.0
+
+[node name="ColorRect11" type="ColorRect" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_aw7vc")
+offset_left = 408.0
+offset_top = 96.0
+offset_right = 600.0
+offset_bottom = 288.0
