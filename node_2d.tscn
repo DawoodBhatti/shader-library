@@ -1,31 +1,45 @@
-[gd_scene load_steps=11 format=3 uid="uid://wq65i1yvnls2"]
+[gd_scene load_steps=6 format=3 uid="uid://wq65i1yvnls2"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="3_crnj2"]
-[ext_resource type="Shader" path="res://water4.gdshader" id="3_mljdr"]
+
+[sub_resource type="Shader" id="Shader_syf8p"]
+code = "shader_type canvas_item;
+
+//toggle below on for use in inspector
+//uniform vec4 selected_color : source_color; // Color picker to select the wave color
+//uniform float segments ; 
+
+//NOTE: the display in previews aren't the same as final running output... I'm not sure why. Wonder if it's because we are working with resonant effects at quite high orders of magnitude... and/or there may be some difference between the editor viewport and the final game view
+
+void fragment() {
+    vec2 screen_pos = SCREEN_UV; // Normalized screen-space coordinates
+	vec4 selected_color = vec4(0.319, 0.528, 1.0, 1.0);
+	float segments = 932.0 ; // experiment with this number to find pleasing patterns. 
+                             // 162, 301, 327, 462 work well and 932 is around the solid resonance pattern
+    float increment = 1.0 / segments;
+	float width = increment / 2.0;
+
+    // Calculate the banded section for the current pixel
+	// Get integer multiples of screen_pos.y which we use to define the bands that we 
+    float counter = floor(screen_pos.y / increment) * increment;
+
+    // Compute the sine wave position
+    float sin_wave_y = counter + 0.0012 * sin(TIME + screen_pos.x * 25.0 + counter*15.0);
+
+    // Check if the fragment falls within the sine wave band
+    if (abs(screen_pos.y - sin_wave_y) > (0.75 * width) && abs(screen_pos.y - sin_wave_y) < 1.25 * width) {
+        COLOR = selected_color // Apply color only within the wave regions
+    	     + sin(TIME)/50.0; // Small time based blue colour variation
+	}
+}
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_co7hh"]
-shader = ExtResource("3_mljdr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aw7vc"]
-shader = ExtResource("3_mljdr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mixvq"]
-shader = ExtResource("3_mljdr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sib4b"]
-shader = ExtResource("3_mljdr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_08hfs"]
-shader = ExtResource("3_mljdr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eri7h"]
-shader = ExtResource("3_mljdr")
+shader = SubResource("Shader_syf8p")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84tej"]
-shader = ExtResource("3_mljdr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ob0rm"]
-shader = ExtResource("3_mljdr")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("3_crnj2")
@@ -38,35 +52,30 @@ offset_right = 296.0
 offset_bottom = 256.0
 
 [node name="ColorRect4" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_aw7vc")
 offset_left = 600.0
 offset_top = 96.0
 offset_right = 792.0
 offset_bottom = 288.0
 
 [node name="ColorRect5" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_mixvq")
 offset_left = 792.0
 offset_top = 96.0
 offset_right = 984.0
 offset_bottom = 288.0
 
 [node name="ColorRect6" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_sib4b")
 offset_left = 408.0
 offset_top = 288.0
 offset_right = 600.0
 offset_bottom = 480.0
 
 [node name="ColorRect7" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_08hfs")
 offset_left = 600.0
 offset_top = 288.0
 offset_right = 792.0
 offset_bottom = 480.0
 
 [node name="ColorRect8" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_eri7h")
 offset_left = 792.0
 offset_top = 288.0
 offset_right = 984.0
@@ -80,7 +89,6 @@ offset_right = 296.0
 offset_bottom = 512.0
 
 [node name="ColorRect9" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_co7hh")
 offset_left = 104.0
 offset_top = 64.0
 offset_right = 296.0
@@ -95,7 +103,6 @@ offset_bottom = 1392.0
 
 [node name="ColorRect11" type="ColorRect" parent="."]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_aw7vc")
 offset_left = 408.0
 offset_top = 96.0
 offset_right = 600.0
