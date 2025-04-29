@@ -2,7 +2,7 @@
 
 Working with sinusoidal waves etc. 
 
-Some problems to solve are that the shader is dependent on the screen size which means it's going to look differently on each screen. also makes it hard to preview. Could just set the game window to be a fixed size?
+Some current problems to solve are that water_shader4 and water_shader5 are dependent on the screen size which means it's going to look differently on each screen. also makes it hard to preview. Could just set the game window to be a fixed size?
 
 Also thinking it would be very cool to create some zelda windwaker style toon water a bit like this: ![image](https://github.com/user-attachments/assets/fdeef702-e802-4231-ac86-9201c03ff0ff)
 
