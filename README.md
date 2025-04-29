@@ -6,5 +6,5 @@ Some current problems to solve are that water_shader4 and water_shader5 are depe
 
 Also thinking it would be very cool to create some zelda windwaker style toon water a bit like this: ![image](https://github.com/user-attachments/assets/fdeef702-e802-4231-ac86-9201c03ff0ff)
 
-Can something be done with voronoi cells and then applying some curvature to the vertices? Etc? Would like to try a simple prototype before maybe moving this to a computational shader... 
+To achieve this... can something be done with voronoi cells and then applying some curvature to the vertices? Etc? Would like to try a simple prototype before maybe moving this to a computational shader... 
 
