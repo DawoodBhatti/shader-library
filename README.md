@@ -7,3 +7,8 @@ Currently there is nothing for the earth tiles but it would be very cool to crea
 perhaps a good place to start would be to create a new voronoi cells project (in python? so that I can refresh myself on it and set up for machine learning projects too!)
 
 then once I have the logic and the output looking good from python I could move to a godot shader project. and maybe computational shaders?
+
+let's work from this and see if we can tweak and draw lines etc
+
+https://godotshaders.com/snippet/voronoi/
+
