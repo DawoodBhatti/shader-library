@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cjdubx0euja5i"]
+
+[ext_resource type="Script" uid="uid://ligrx3fd5mgc" path="res://test_level/test_level.gd" id="1_12ge2"]
+[ext_resource type="PackedScene" uid="uid://kobeoevtfe5o" path="res://test_level/player/player.tscn" id="2_adkkv"]
+[ext_resource type="PackedScene" uid="uid://7eoor6eb78ss" path="res://test_level/floor/floor.tscn" id="3_42dln"]
+[ext_resource type="Environment" uid="uid://cp5iqqlndvhxy" path="res://test_level/white environment.tres" id="3_adkkv"]
+[ext_resource type="Script" uid="uid://bhdxtq0cg283o" path="res://test_level/debug.gd" id="4_ttjb5"]
+
+[node name="Root" type="Node" unique_id=1331235816]
+script = ExtResource("1_12ge2")
+
+[node name="Player" parent="." unique_id=1216842878 instance=ExtResource("2_adkkv")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2051583580]
+environment = ExtResource("3_adkkv")
+
+[node name="Floor" parent="." unique_id=1930642960 instance=ExtResource("3_42dln")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=321897317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28, 0)
+
+[node name="Debug" type="Node" parent="." unique_id=732074115]
+script = ExtResource("4_ttjb5")
