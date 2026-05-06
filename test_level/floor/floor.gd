@@ -5,7 +5,7 @@ extends Node3D
 @onready var collision_shape: CollisionShape3D = $StaticBody3D/CollisionShape3D
 
 #dimensions of floor plane
-@export var visible_floor_length: int = 1000
+@export var visible_floor_length: int = 10000
 
 #horizontal dimensions of floor collision shape
 @export var solid_floor_length: int = 100

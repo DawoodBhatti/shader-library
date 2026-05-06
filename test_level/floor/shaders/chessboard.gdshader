@@ -4,7 +4,7 @@ render_mode blend_mix, cull_disabled, depth_draw_opaque;
 uniform vec4 color_1 : source_color;
 uniform vec4 color_2 : source_color;
 
-//area of solid colour indicating collision shape
+//area of solid colour indicating floor collision shape 
 uniform int solid_floor_length;
 
 //area of grid lines 
@@ -30,11 +30,15 @@ void fragment() {
     float y_lower = x_lower;
     float y_upper = x_upper;
 
+    //grid line width
+    float grid_width = 0.1;
+
     vec4 colour;
 
+
     //paint collision floor plane
-    if ((scaled.x) > x_lower && (scaled.x) < x_upper && 
-        (scaled.y) > y_lower && (scaled.y) < y_upper){
+    if ((scaled.x) > x_lower + grid_width && (scaled.x) < x_upper && 
+        (scaled.y) > y_lower + grid_width && (scaled.y) < y_upper){
 
         int nx = int((ceil((scaled.x-x_lower)/square_length)));
         int ny = int((ceil((scaled.y-y_lower)/square_length)));
@@ -51,11 +55,15 @@ void fragment() {
        //col = vec4(0.1, 0.1, 1.0, 0.5);
 
 
-    //non collidable floor plane
+    //paint non collidable floor plane
     }else{
+        //default colour
+        colour = vec4(1.0, 1.0, 1.0, 0.0);
 
-        colour = vec4(1.0, 0.1, 0.1, 0.5);
 
+        if((mod(scaled.x + square_length/2.0, square_length) < grid_width || mod(scaled.y + square_length/2.0, square_length) < grid_width)){
+            colour = vec4(0.0, 0.0, 0.0, 1.0);
+        }
     }
 
     ALBEDO = colour.rgb;
