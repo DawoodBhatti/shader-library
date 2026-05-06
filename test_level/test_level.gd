@@ -13,6 +13,9 @@ func _ready() -> void:
 	debug.print_all_nodes(get_tree().root)
 	print()
 
+	#debug sphere at global origin
+	debug.spawn_debug_sphere(Vector3(0,0,0), 1.0)
+	
 
 func _setup_window():
 	var mode := DisplayServer.window_get_mode()
@@ -22,7 +25,7 @@ func _setup_window():
 		print("'Windowed' mode detected.")
 		print("Change default mode to 'Maximized' in Project Settings.")
 
-
+#automatically setup movement so we don't have to define in project settings each time
 func _setup_input_actions():
 	print("Setting up input actions...")
 
@@ -59,7 +62,7 @@ const ACTIONS := [
 
 func _input(event):
 	
-	#debug switch
+	#debug switch to see if control inputs are working
 	if true:
 		return
 	
