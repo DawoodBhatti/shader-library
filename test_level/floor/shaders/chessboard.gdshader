@@ -1,6 +1,8 @@
 shader_type spatial;
 render_mode blend_mix, cull_disabled, depth_draw_opaque;
 
+varying vec3 v_world_pos;
+
 uniform vec4 color_1 : source_color;
 uniform vec4 color_2 : source_color;
 
@@ -16,8 +18,17 @@ uniform int squares;
 //enforce integer sizing from gdscript as can't draw non integer pixels
 uniform float square_length;
 
-void fragment() {
 
+//TODO: 
+//understand how we have done this
+void vertex() {
+
+    //world matrix transform is contained in model_matrix and when we multiply it by an object's local co-ordinate we obtain that object's world coordinates
+    v_world_pos = (MODEL_MATRIX  * vec4(VERTEX, 1.0)).xyz;
+}
+
+
+void fragment() {
 
     //UV coordinates represent the normalised 0-1 coordinates
     // so we need to multiply by the shape length
@@ -30,15 +41,12 @@ void fragment() {
     float y_lower = x_lower;
     float y_upper = x_upper;
 
-    //grid line width
-    float grid_width = 1.1;
-
     vec4 colour;
 
 
     //paint collision floor plane
-    if ((scaled.x) > x_lower + grid_width && (scaled.x) < x_upper && 
-        (scaled.y) > y_lower + grid_width && (scaled.y) < y_upper){
+    if ((scaled.x) > x_lower && (scaled.x) < x_upper && 
+        (scaled.y) > y_lower && (scaled.y) < y_upper){
 
         int nx = int((ceil((scaled.x-x_lower)/square_length)));
         int ny = int((ceil((scaled.y-y_lower)/square_length)));
@@ -53,7 +61,6 @@ void fragment() {
         }
 
        //col = vec4(0.1, 0.1, 1.0, 0.5);
-
 
     //paint non collidable floor plane
     }else{
@@ -71,6 +78,19 @@ void fragment() {
 
         if (gx < px || gy < py) {
             colour = vec4(0.0, 0.0, 0.0, 0.3);
+
+            vec3 world_pos  = v_world_pos;
+            vec3 camera_pos = (INV_VIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+
+            // distance of fragment to camera
+            float dist = distance(world_pos, camera_pos);
+
+            // tune these
+            float fade_start = 100.0;
+            float fade_end   = 300.0;
+
+            float fade = clamp(1.0 - (dist - fade_start) / (fade_end - fade_start), 0.0, 1.0);
+            colour.a *= fade;
         }
 
     }
