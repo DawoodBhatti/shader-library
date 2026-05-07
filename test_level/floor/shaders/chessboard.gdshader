@@ -1,6 +1,8 @@
 shader_type spatial;
 render_mode blend_mix, cull_disabled, depth_draw_opaque;
 
+//varying value is a value which we calculate within the vertex() function and used inside the fragment() function
+//but crucially whose value is interpolated by the GPU
 varying vec3 v_world_pos;
 
 uniform vec4 color_1 : source_color;
@@ -62,7 +64,7 @@ void fragment() {
 
        //col = vec4(0.1, 0.1, 1.0, 0.5);
 
-    //paint non collidable floor plane
+    //paint non collidable floor plane as fading grid lines
     }else{
         //default colour
         colour = vec4(1.0, 1.0, 1.0, 0.0);
