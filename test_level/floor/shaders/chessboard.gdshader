@@ -31,7 +31,7 @@ void fragment() {
     float y_upper = x_upper;
 
     //grid line width
-    float grid_width = 0.1;
+    float grid_width = 1.1;
 
     vec4 colour;
 
@@ -60,10 +60,19 @@ void fragment() {
         //default colour
         colour = vec4(1.0, 1.0, 1.0, 0.0);
 
+        //we use fwidth to solve anti aliasing flicker of grid lines
+        float gx = mod(scaled.x + square_length/2.0, square_length);
+        float gy = mod(scaled.y + square_length/2.0, square_length);
 
-        if((mod(scaled.x + square_length/2.0, square_length) < grid_width || mod(scaled.y + square_length/2.0, square_length) < grid_width)){
-            colour = vec4(0.0, 0.0, 0.0, 1.0);
+        //fwidth takes a distance function and computes the sum of absolute derivatives across neighbours in a 2 by 2 grid
+        //it corresponds to the 'footprint' of a 2d pixel projected into our 3d game space
+        float px = fwidth(scaled.x);
+        float py = fwidth(scaled.y);
+
+        if (gx < px || gy < py) {
+            colour = vec4(0.0, 0.0, 0.0, 0.3);
         }
+
     }
 
     ALBEDO = colour.rgb;
