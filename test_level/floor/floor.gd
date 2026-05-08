@@ -16,9 +16,11 @@ extends Node3D
 @export var floor_height: int = 0
 
 # Load the material relative to this folder	
-# Preload only works if the target file is visible at compile time 
-# Load exectues at runtime so the target file will always be available
-@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/pattern_chessboard.tres")
+# Preload loads up front but only works if the target file is 'visible' at compile time 
+# Load execute at runtime, so it slows game running, but the target file will always be available
+
+#@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/pattern_chessboard.tres")
+@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/neon_shader.tres")
 
 
 func _ready() -> void:
@@ -68,7 +70,7 @@ func _setup_collision_shape() -> void:
 	var box := BoxShape3D.new()
 	box.size = Vector3(solid_floor_length, floor_height, solid_floor_length)
 	collision_shape.shape = box
-	
+		
 	print("collision shape size: ", box.size)
 
 	static_body.collision_layer = 1

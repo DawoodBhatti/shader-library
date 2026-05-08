@@ -21,11 +21,10 @@ uniform int squares;
 uniform float square_length;
 
 
-//TODO: 
-//understand how we have done this
 void vertex() {
 
-    //world matrix transform is contained in model_matrix and when we multiply it by an object's local co-ordinate we obtain that object's world coordinates
+    //world matrix transform is contained in model_matrix and allows us to convert from local to world space.
+    //when we multiply it by an object's local co-ordinate we obtain that object's world coordinates
     v_world_pos = (MODEL_MATRIX  * vec4(VERTEX, 1.0)).xyz;
 }
 
@@ -81,7 +80,11 @@ void fragment() {
         if (gx < px || gy < py) {
             colour = vec4(0.0, 0.0, 0.0, 0.3);
 
+            //similar to WORLD_MATRIX... INV_VIEW_MATRIX converts from camera space to world space. so when we multiply by the camera's position (local origin) in its own frame of 
+            //reference we obtain its position in world space. 
             vec3 world_pos  = v_world_pos;
+
+            //note the .xyz at the end is syntax for extracting only some of the components of the vec4 and we call this 'swizzling'
             vec3 camera_pos = (INV_VIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
 
             // distance of fragment to camera

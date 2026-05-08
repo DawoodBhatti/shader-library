@@ -5,9 +5,9 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_f04md")
-shader_parameter/color_1 = Color(0.9372549, 0.6666667, 0.20784314, 1)
-shader_parameter/color_2 = Color(0.23921569, 0.7176471, 0.6862745, 0.90588236)
-shader_parameter/solid_width = 0
-shader_parameter/solid_depth = 0
+shader_parameter/color_1 = Color(0.9372549, 0.6666667, 0.20784314, 0.39215687)
+shader_parameter/color_2 = Color(0.23921569, 0.7176471, 0.6862745, 0.39215687)
+shader_parameter/solid_floor_length = 0
+shader_parameter/visible_floor_length = 0
 shader_parameter/squares = 0
 shader_parameter/square_length = 0.0
