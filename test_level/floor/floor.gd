@@ -19,8 +19,9 @@ extends Node3D
 # Preload loads up front but only works if the target file is 'visible' at compile time 
 # Load execute at runtime, so it slows game running, but the target file will always be available
 
-#@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/pattern_chessboard.tres")
-@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/neon_shader.tres")
+@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/pattern_chessboard.tres")
+#@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/neon_shader.tres")
+#@onready var pattern_material: ShaderMaterial = load("res://test_level/floor/materials/neon_with_grid.tres")
 
 
 func _ready() -> void:

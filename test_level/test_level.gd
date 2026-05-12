@@ -14,7 +14,7 @@ func _ready() -> void:
 	print()
 
 	#debug sphere at global origin
-	debug.spawn_debug_sphere(Vector3(0,0,0), 1.0)
+	#debug.spawn_debug_sphere(Vector3(0,0,0), 1.0)
 	
 
 func _setup_window():

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dvl8t3ftd5l0r"]
+
+[ext_resource type="PackedScene" uid="uid://cjdubx0euja5i" path="res://test_level/test_level.tscn" id="1_uhqqe"]
+[ext_resource type="PackedScene" uid="uid://cu3t7ue7df3uy" path="res://spheres/sphere_scene.tscn" id="2_ia1lp"]
+
+[node name="TestScene" type="Node2D" unique_id=790994299]
+
+[node name="TestLevelRoot" parent="." unique_id=1331235816 instance=ExtResource("1_uhqqe")]
+
+[node name="SphereScene" parent="." unique_id=924373480 instance=ExtResource("2_ia1lp")]

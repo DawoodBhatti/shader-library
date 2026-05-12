@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dgnfh8w0i42q2"]
+
+[ext_resource type="Shader" uid="uid://jr50divayaic" path="res://explosions (WIP)/shaders/pscyhedelicexplosion.gdshader" id="1_c72el"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_c72el")
+shader_parameter/explosion_time = 0.0
+shader_parameter/explosion_size = 1.0
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/swirl_strength = 1.2
+shader_parameter/shock_strength = 0.4
+shader_parameter/color_core = Vector3(1, 0.6, 0.2)
+shader_parameter/color_outer = Vector3(0.2, 0.6, 1)

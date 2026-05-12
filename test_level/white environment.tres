@@ -7,4 +7,5 @@ background_mode = 1
 background_color = Color(0.9805221, 0.9795378, 0.9842914, 1)
 background_energy_multiplier = 0.9
 sky = SubResource("Sky_0vuym")
+ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2

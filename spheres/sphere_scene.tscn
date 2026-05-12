@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cu3t7ue7df3uy"]
+
+[ext_resource type="Script" uid="uid://f5gnp1uc08cy" path="res://spheres/sphere_scene.gd" id="1_bicvl"]
+[ext_resource type="Material" uid="uid://d2p55axk484ed" path="res://spheres/materials/test_sphere.tres" id="2_yaq87"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0k5oy"]
+
+[node name="SphereScene" type="Node3D" unique_id=924373480]
+script = ExtResource("1_bicvl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2045295509]
+transform = Transform3D(14.999999, 0, 0, 0, 14.999998, 0, 0, 0, 14.999998, 0, 10, 0)
+mesh = SubResource("SphereMesh_0k5oy")
+surface_material_override/0 = ExtResource("2_yaq87")

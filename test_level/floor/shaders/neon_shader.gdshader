@@ -1,12 +1,34 @@
 shader_type spatial;
 render_mode blend_mix, cull_disabled, depth_draw_opaque;
 
+//varying value is a value which we calculate within the vertex() function and used inside the fragment() function
+//but crucially whose value is interpolated by the GPU
+varying vec3 v_world_pos;
+
+uniform vec4 color_1 : source_color;
+uniform vec4 color_2 : source_color;
 
 //area of solid colour indicating floor collision shape 
 uniform int solid_floor_length;
 
 //area of grid lines 
 uniform int visible_floor_length;
+
+//total number of squares appearing on shape are: squares * squares
+uniform int squares;
+
+//enforce integer sizing from gdscript as can't draw non integer pixels
+uniform float square_length;
+
+
+void vertex() {
+
+    //world matrix transform is contained in model_matrix and allows us to convert from local to world space.
+    //when we multiply it by an object's local co-ordinate we obtain that object's world coordinates
+    v_world_pos = (MODEL_MATRIX  * vec4(VERTEX, 1.0)).xyz;
+}
+
+
 
 //helper functions need to be defined before they are called in code
 //https://iquilezles.org/articles/palettes/
@@ -17,10 +39,6 @@ vec3 palette( float t ) {
     vec3 d = vec3(0.263,0.416,0.557);
 
     return a + b*cos( 6.28318*(c*t+d) );
-}
-
-void vertex() {
-	// Called for every vertex the material is visible on.
 }
 
 
@@ -84,8 +102,10 @@ void fragment() {
 
 		ALBEDO = vec3(final_colour);
 		ALPHA = 1.0;
-	}
-
+    }
 }
 
-
+// void fragment() {
+//     ALBEDO = vec3(UV.x, UV.y, 0.0);
+//     ALPHA = 1.0;
+// }

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c6plwts0ux2c0"]
+
+[ext_resource type="Script" uid="uid://bdvjkw5t2tr5d" path="res://explosions/explosion_test.gd" id="1_vgktk"]
+[ext_resource type="Material" uid="uid://dgnfh8w0i42q2" path="res://explosions/materials/explosionmaterial.tres" id="2_jpu4b"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_26cqs"]
+
+[node name="ExplosionTest" type="Node3D" unique_id=1973674335]
+script = ExtResource("1_vgktk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=758350871]
+mesh = SubResource("SphereMesh_26cqs")
+surface_material_override/0 = ExtResource("2_jpu4b")
+
+[node name="AnimationPlayer" type="Node" parent="." unique_id=1385343691]

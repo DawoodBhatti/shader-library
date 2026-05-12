@@ -11,6 +11,7 @@ const SPEED = 15
 # Mouse look
 # -----------------------------------------
 func _ready():
+	position.z += 15.0
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d2p55axk484ed"]
+
+[ext_resource type="Shader" uid="uid://d2kbkb2pf8eoa" path="res://spheres/shaders/spherical_wave.gdshader" id="1_aupya"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_aupya")
